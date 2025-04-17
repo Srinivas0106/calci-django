@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Django Calculator</title>
+    <style>
+        body { font-family: Arial; text-align: center; padding: 50px; }
+        input, select, button { padding: 10px; margin: 5px; }
+    </style>
+</head>
+<body>
+    <h2>Simple Django Calculator</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="number" step="any" name="num1" placeholder="Enter number 1" required>
+        <input type="number" step="any" name="num2" placeholder="Enter number 2" required><br>
+
+        <select name="operation">
+            <option value="add">Addition (+)</option>
+            <option value="subtract">Subtraction (-)</option>
+            <option value="multiply">Multiplication (×)</option>
+            <option value="divide">Division (÷)</option>
+        </select><br>
+
+        <button type="submit">Calculate</button>
+    </form>
+
+    {% if result is not None %}
+        <h3>Result: {{ result }}</h3>
+    {% endif %}
+</body>
+</html>
